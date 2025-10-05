@@ -2,7 +2,7 @@ import { Routes } from "@angular/router";
 
 const routes:Routes = [
   {
-    path:'auth',
+    path:'',
     children:[
       {
         path:'login',

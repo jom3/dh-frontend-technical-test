@@ -4,15 +4,20 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthLayout,
     loadChildren: () => import('./features/auth/routes/auth.routes'),
+  },
+  {
+    path: '**',
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
   },
   {
     path: '',
     component: HomeLayout,
     children: [
-      //aqui sus hijos
+      // aquí los hijos del home
     ]
-  }
+  },
 ];
