@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="p-12 bg-white border border-[#E0E4EA] rounded-xl flex flex-col gap-4 w-[540px]">
+  <brand-logo />
+  <div class="flex flex-col gap-2">
+    <h3 class="font-bold text-2xl leading-[120%] text-center font-['Inter']">Create Your Account</h3>
+    <p class="text-sm leading-[130%] font-normal text-center font-['Inter'] text-[#525866]">Sign up to start organizing
+      your notes and boost your productivity
+    </p>
+  </div>
+  <form class="flex flex-col gap-4 pt-6">
+    <div class="flex flex-col gap-1.5">
+      <span for="email" class="font-['Inter'] text-sm leading-[140%] font-medium text-[#0E121B]">Email Address</span>
+      <input type="text" id="email" placeholder="email@example.com"
+        class="border border-[#CACFD8] px-4 py-3 rounded-lg text-sm placeholder:text-[#717784] leading-[130%] font-['Inter']">
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <span for="password" class="font-['Inter'] text-sm leading-[140%] font-medium text-[#0E121B]">Password</span>
+      <div class="relative w-full">
+        <input type="password" id="password"
+          class="border border-[#CACFD8] px-4 py-3 rounded-lg text-sm placeholder:text-[#717784] leading-[130%] font-['Inter'] w-full pr-10">
+        <button type="button" aria-label="Toggle password visibility" tabindex="0"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2"
+          onclick="const input = this.previousElementSibling; input.type = input.type === 'password' ? 'text' : 'password'; this.querySelector('svg').classList.toggle('opacity-30');">
+          <svg class="h-5 w-5 transition-opacity duration-200" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+      <p class="flex flex-row gap-3 items-center text-xs">
+        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2 8.5C2 11.8133 4.68605 14.5 8 14.5C11.3139 14.5 14 11.8133 14 8.5C14 5.18605 11.3139 2.5 8 2.5C4.68605 2.5 2 5.18605 2 8.5Z"
+            stroke="#525866" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M8.0038 10.9621V8.09573V10.9621ZM8 6.0695V6.02734V6.0695Z" fill="#525866" />
+          <path d="M8.0038 10.9621V8.09573M8 6.0695V6.02734" stroke="#525866" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        At least 8 characters
+      </p>
+    </div>
+    <button
+      class="bg-[#335CFF] rounded-lg font-['Inter'] font-semibold text-sm leading-[120%] text-white px-4 py-3">Sign Up</button>
+  </form>
+  <hr class="text-[#E0E4EA]">
+  <span class="text-center font-normal font-['Inter'] text-sm leading-[130%] text-[#525866]">Or log in with:</span>
+  <button
+    class="flex flex-row gap-2.5 justify-center items-center font-semibold font-['Inter'] border border-[#CACFD8] px-4 py-3 rounded-lg text-sm">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M17.8379 10.7181C17.9459 10.1681 17.9999 9.5881 17.9999 9.0081C17.9999 8.6161 17.9739 8.2341 17.9239 7.8611C17.8869 7.5871 17.6429 7.3881 17.3669 7.3881H9.5619C9.2519 7.3881 8.9999 7.6401 8.9999 7.9501V10.1561C8.9999 10.4661 9.2519 10.7181 9.5619 10.7181H13.8369C14.0129 10.7181 14.1419 10.8981 14.0759 11.0611C13.1409 13.3711 10.6859 14.8871 7.9439 14.3801C5.83793 13.9911 4.11193 12.3211 3.65993 10.2281C2.89293 6.6761 5.57693 3.53814 8.9999 3.53814C10.1219 3.53814 11.1619 3.87514 12.0289 4.45214C12.2609 4.60614 12.5639 4.59114 12.7599 4.39214L14.4619 2.65914C14.6939 2.42214 14.6799 2.02814 14.4159 1.82714C12.9749 0.731143 11.1929 0.065143 9.2549 0.012143C4.38293 -0.122857 0.163934 3.83514 0.0049339 8.7061C-0.162066 13.8141 3.93193 18.0081 8.9999 18.0081C13.3829 18.0081 17.0369 14.8681 17.8379 10.7181Z"
+        fill="#0E121B" />
+    </svg>
+    Google</button>
+  <hr class="text-[#E0E4EA]">
+  <p class="text-center font-normal font-['Inter'] text-sm leading-[130%] text-[#525866]">Already have an account? <a
+      [routerLink]="['/auth/login']" routerLinkActive="router-link-active" class="text-black">Log in</a></p>
+</div>
