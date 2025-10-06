@@ -1,0 +1,29 @@
+.tag-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.tag-container::-webkit-scrollbar {
+  width: 6px;
+  display: none;
+}
+
+.tag-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.tag-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.tag-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.tag-container {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}

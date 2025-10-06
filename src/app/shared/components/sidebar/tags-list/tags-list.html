@@ -1,0 +1,6 @@
+<div class="tag-container w-full h-[500px] overflow-scroll flex flex-col gap-3 mt-3">
+  <span class="text-gray-700 font-medium font-['Inter']">Tags</span>
+  @for (tag of tags(); track $index) {
+    <tags-card-item  [tag]="tag" />
+  }
+</div>
