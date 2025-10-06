@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandLogo } from '../../../../shared/components/brand-logo/brand-logo';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../service/auth';
+import { Jwt } from '../../../../core/services/jwt';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,9 @@ import { Auth } from '../../service/auth';
 export default class Login {
 
   private readonly fb = inject(FormBuilder);
-  private readonly authSvc = inject(Auth)
+  private readonly authSvc = inject(Auth);
+  private readonly jwtSvc = inject(Jwt)
+  private readonly router = inject(Router);
 
   loginForm = this.fb.group({
     email: this.fb.nonNullable.control('', [Validators.email, Validators.required]),
@@ -26,7 +29,15 @@ export default class Login {
       return
     }
     const { email, password } = this.loginForm.getRawValue()
-    console.log(this.authSvc.login({email, password}))
+    this.authSvc.login({ email, password }).subscribe({
+      next: (r) => {
+        this.jwtSvc.setToken(r.token)
+        this.router.navigate([''])
+      },
+      error: (err) => {
+        alert(err.message || 'Error desconocido')
+      },
+    });
   }
 
   hasError(controlName: string, error: string): boolean {

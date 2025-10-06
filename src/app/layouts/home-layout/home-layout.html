@@ -1,1 +1,40 @@
-<p>home-layout works!</p>
+<div class="flex flex-row">
+  <sidebar></sidebar>
+  <div class="w-full h-screen overflow-hidden flex flex-col">
+    <app-header></app-header>
+    <div class="w-full h-[650px] flex flex-row justify-between gap-1">
+      <div class="w-auto h-full border-r border-gray-300 px-2 py-3 flex flex-col">
+        <a routerLink="/create"
+          class="w-full text-center text-white font-semibold px-5 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition-all duration-300 cursor-pointer">
+          + Create New Note
+      </a>
+
+        <div class="notes-container mt-4 flex-1 overflow-y-auto flex flex-col gap-3">
+          @for (note of notes(); track $index)
+          {
+          <div [routerLink]="['/note', note.id]"
+            class="cursor-pointer flex flex-col gap-3 border-b border-gray-300 hover:bg-gray-200 p-2 rounded-sm transition-all duration-300">
+            <h4 class="text-lg font-medium">{{note.title}}</h4>
+            <div class="flex flex-row flex-wrap gap-1">
+              @for (tag of note.tags; track $index) {
+              <span class="bg-gray-300 px-2 py-1 text-[10px] rounded-lg">{{tag.tag.name}}</span>
+              }
+            </div>
+            <span class="text-xs text-gray-500">{{getCurrentDate(note.createdAt)}}</span>
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="w-full">
+        <router-outlet></router-outlet>
+      </div>
+      @if ( currentRoute() !== '/create') {
+      <div class="h-full w-64 border-l border-gray-300 px-2 py-3 flex flex-col gap-3">
+        <custom-item-button icon="archive.svg" title="Archive Note" [hasBorder]="true" />
+        <custom-item-button icon="delete.svg" title="Delete Note" [hasBorder]="true" />
+      </div>
+      }
+    </div>
+  </div>
+</div>

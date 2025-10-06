@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { BrandLogo } from "../../../../shared/components/brand-logo/brand-logo";
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterUser } from '../../service/register-user';
+import { Auth } from '../../service/auth';
+import { RegisterResponse } from '../../models/register-response';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,8 @@ import { RegisterUser } from '../../service/register-user';
 export default class Register {
 
   private readonly fb = inject(FormBuilder);
-  private readonly registerUserSvc = inject(RegisterUser)
+  private readonly authSvc = inject(Auth)
+  private readonly router = inject(Router)
 
   registerForm = this.fb.group({
     email: this.fb.nonNullable.control('', [Validators.email, Validators.required]),
@@ -25,8 +28,14 @@ export default class Register {
       this.registerForm.markAllAsTouched()
       return
     }
-    const { email, password } = this.registerForm.getRawValue()
-    console.log(this.registerUserSvc.registerUser({email, password}));
+    const userData = this.registerForm.getRawValue()
+    this.authSvc.register(userData).subscribe({
+      next:(r)=>{
+        this.router.navigate(['/auth/login'])
+        console.log(r.message);
+      },
+      error:e=>console.log(e)
+    })
   }
 
   hasError(controlName: string, error: string): boolean {

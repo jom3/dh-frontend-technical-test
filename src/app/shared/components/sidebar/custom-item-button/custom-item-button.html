@@ -1,0 +1,18 @@
+  <button class="w-full flex flex-row justify-between px-4 py-3 items-center hover:bg-gray-300 transition-all duration-300 rounded-lg font-['Inter']" [ngClass]="{'border border-gray-300': hasBorder()}">
+    <div class="flex flex-row gap-2 items-center justify-center">
+      <img [src]="'/icons/'+ icon()" [alt]="icon()" />
+      <span class="ml-2 text-sm font-medium text-gray-700">{{title()}}</span>
+    </div>
+    @if (secondIcon()) {
+      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1209_2176)">
+          <path d="M1 1L5 5L1 9" stroke="#364153" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <defs>
+          <clipPath id="clip0_1209_2176">
+            <rect width="6" height="10" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    }
+  </button>
